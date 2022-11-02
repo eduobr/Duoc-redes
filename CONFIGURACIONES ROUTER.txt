@@ -1,0 +1,63 @@
+ROUTER SERENA
+-------------
+enable
+configure terminal
+hostname SERENA
+service password-encryption
+no ip domain-lookup
+enable secret palto2014
+banner motd 'ADVERTENCIA: RED PRIVADA'
+line vty 0 3
+password class
+login
+exit
+line console 0
+password class
+login
+exit
+int f0/0
+ip address 192.168.10.161 255.255.255.240
+no shut
+exit
+int f0/1
+ip address 192.168.10.81 255.255.255.240
+no shutdown
+exit
+int s0/0/0
+ip address 10.0.0.1 255.255.255.252
+clock rate 128000
+no shutdown
+exit
+
+ip route 0.0.0.0 0.0.0.0 s0/0/0
+
+ROUTER TEMUCO
+-------------
+enable
+configure terminal
+hostname TEMUCO
+service password-encryption
+no ip domain-lookup
+enable secret palto2014
+banner motd 'ADVERTENCIA: RED PRIVADA'
+line vty 0 3
+password class
+login
+exit
+line console 0
+password class
+login
+exit
+
+int f0/0
+ip address 192.168.10.97 255.255.255.240
+no shut
+exit
+
+int s0/0/1
+ip address 10.0.0.2 255.255.255.252
+no shutdown
+exit
+
+ip route 192.168.10.160 255.255.255.240 s0/0/1
+ip route 192.168.10.80 255.255.255.240 s0/0/1

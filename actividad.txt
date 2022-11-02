@@ -1,0 +1,16 @@
+-Nombre del Router
+-contraseña cifrada 1105
+"palto2015"
+-Mensaje del dia "A UNA SEMANA DE MI PRIMER UNO"
+-Configurar la linea consola y las 5 lineas VTY
+con la contraseña "class"
+-configurar la interfaz f0/0 con la 1era ip valida
+del segmento, y la interfaz f0/1 con la ultima ip valida de su respectivo segmento.
+-configuara c/u de los host indicando IP, mascara y  gateway
+
+
+CENTRAL(config)#enable secret palto2015
+CENTRAL(config)#line vty 0 4
+CENTRAL(config-line)#password class
+CENTRAL(config-line)#login
+CENTRAL(config-line)#exit

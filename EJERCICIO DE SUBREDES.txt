@@ -1,0 +1,97 @@
+-------------EJERCICIO SUBREDES-------------------------
+
+Router 1
+
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname R1
+R1(config)#int f0/0
+R1(config-if)#ip address 192.168.0.97 255.255.255.224
+R1(config-if)#no shutdown
+
+R1(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+R1(config-if)#int f0/1
+R1(config-if)#ip address 192.168.0.161 255.255.255.224
+R1(config-if)#no shutdown
+
+R1(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+R1(config-if)#int S0/0/0
+R1(config-if)#ip address 192.168.01 255.255.255.224
+                         ^
+% Invalid input detected at '^' marker.
+	
+R1(config-if)#ip address 192.168.0.1 255.255.255.224
+clock rate
+R1(config-if)#no shutdown
+
+%LINK-5-CHANGED: Interface Serial0/0/0, changed state to down
+
+
+
+router 2-------------------------------------------------------------------------------------
+
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname R2
+R2(config)#int f0/0
+R2(config-if)#ip add 192.168.0.193 255.255.255.223
+Bad mask 0xFFFFFFDF for address 192.168.0.193
+R2(config-if)#no shutdown
+
+R2(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+R2(config-if)#int f0/1
+R2(config-if)#ip add 192.168.0.65 255.255.255.224
+R2(config-if)#no shutdown
+
+R2(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+R2(config-if)#int s0/0/0
+R2(config-if)#ip add 192.168.0.2 255.255.255.224
+R2(config-if)#clock rate
+
+no shutdown
+
+-----------------------------------------------------------------------------------------------------
+
+Enrutamiento estatico (ejercicio de subredes)
+
+ip route 192.168.0.192 255.255.255.224 s0/0/0 -----ip de destino
+
+ip route 192.168.0.64 255.255.255.224 s0/0/0
+
+
+Para router 2
+
+ip route 192.168.0.96 255.255.255.224 s0/0/0 
+
+ip route 192.268.0.160 255.255.255.224 s0/0/0
+
+exit
+
+show ip route --descripcion enrutamiento
+
+-----------------------------------------------------------------------------------------------------
+
+enrutamiento por defecto --para cualquier router
+
+ip route 0.0.0.0 0.0.0.0 s0/0/0
+
+ip route 0.0.0.0 0.0.0.0 s0/0/1
+

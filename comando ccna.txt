@@ -1,0 +1,23 @@
+-enable             --PA PONER CODIGO
+-configure terminal --CONFIGURAR ROUTER
+-hostname CENTRAL   --NOMBRE ROUTER
+-enable secret      --CONTRASEÑA
+-#banner motd #EJERCICIO1# --MENSAJE DEL DIA
+
+-line con 0         --ENTRAR A CONFIGURAR LA CONSOLA}
+-password           --CONTRASEÑA CONSOLA
+-login
+-exit
+
+-line vty 0 4 --CONFIGURAR VTY
+-password
+-login
+-exit
+
+-int f0/0 --ENTRAR EN LA INTERFAZ     configurar fast ethernet
+-ip address 10.20.30.1 255.255.255.0 --CONFIGURAR IP f0/0
+-no shutdown --SALIR INTERFAZ
+
+-exit --
+
+-end --terminar
